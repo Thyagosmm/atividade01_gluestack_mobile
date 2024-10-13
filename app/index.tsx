@@ -7,15 +7,16 @@ import {
   ButtonText,
   Input,
   InputField,
-  SafeAreaView,
   ScrollView,
   Text,
+  VStack,
 } from "@gluestack-ui/themed";
+import { SafeAreaView } from "react-native";
 import { Link } from "expo-router";
 
-export default function Home() {
+export default function LoginScreen() {
   return (
-    <SafeAreaView backgroundColor="$black" style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -26,57 +27,59 @@ export default function Home() {
       >
         <Box width="100%" alignItems="center">
           <Avatar bgColor="$amber600" size="2xl" borderRadius="$full">
-            <AvatarFallbackText>Sandeep Srivastava</AvatarFallbackText>
+            <AvatarFallbackText>Avatar de Usuário</AvatarFallbackText>
             <AvatarImage
-              alt="Sandeep Srivastava"
+              alt="Avatar de Usuário"
               source={require("../assets/images/avatar.png")}
             />
           </Avatar>
         </Box>
-        <Input
-          variant="outline"
-          size="md"
-          isDisabled={false}
-          isInvalid={false}
-          isReadOnly={false}
-          style={{ width: "80%" }}
-        >
-          <InputField type="text" placeholder="Email..." />
-        </Input>
-        <Input
-          variant="outline"
-          size="md"
-          isDisabled={false}
-          isInvalid={false}
-          isReadOnly={false}
-          style={{ width: "80%" }}
-        >
-          <InputField type="password" placeholder="Senha" />
-        </Input>
+        <VStack width="80%">
+          <Text color="$black" lineHeight="$xl">
+            Email
+          </Text>
+          <Input
+            variant="outline"
+            size="md"
+            backgroundColor="$backgroundDark100"
+          >
+            <InputField type="text" />
+          </Input>
+        </VStack>
+        <VStack width="80%">
+          <Text color="$black" lineHeight="$xl">
+            Senha
+          </Text>
+          <Input
+            variant="outline"
+            size="md"
+            backgroundColor="$backgroundDark100"
+          >
+            <InputField type="text" />
+          </Input>
+        </VStack>
         <Button
+          backgroundColor="$green600"
           size="md"
           variant="solid"
-          action="primary"
-          isDisabled={false}
-          isFocusVisible={false}
+          action="positive"
           style={{ width: "80%" }}
         >
           <ButtonText>Login</ButtonText>
         </Button>
-        <Link href="/Register/Register" asChild>
+        <Link href="/screens/RegisterScreen" asChild>
           <Button
+            backgroundColor="$green600"
             size="md"
             variant="solid"
-            action="primary"
-            isDisabled={false}
-            isFocusVisible={false}
+            action="positive"
             style={{ width: "80%" }}
           >
             <ButtonText>Cadastre-se</ButtonText>
           </Button>
         </Link>
-        <Link href="/Forgot/Forgot">
-          <Text>Esqueceu a senha</Text>
+        <Link href="/screens/ForgotPasswordScreen">
+          <Text color="black">Esqueceu a senha</Text>
         </Link>
       </ScrollView>
     </SafeAreaView>
